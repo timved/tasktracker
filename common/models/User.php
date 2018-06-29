@@ -20,11 +20,15 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property integer $role_id
  */
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+//    const ROLE_ADMINISTRATOR = 0;
+//    const ROLE_USER = 1;
+//    const ROLE_GUEST = 2;
 
 
     /**
@@ -53,6 +57,18 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['role_id','integer'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Имя',
+            'email' => 'E-mail',
+            'status' => 'Статус',
+            'role_id' => 'Роль',
         ];
     }
 
@@ -185,5 +201,19 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public function getRole(){
+        switch ($this->role_id) {
+            case 0:
+                return 'Администратор';
+                break;
+            case 1:
+                return 'Пользователь';
+                break;
+            case 2:
+                return 'Гость';
+                break;
+        }
     }
 }

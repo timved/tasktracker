@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'name' => 'White Rooster',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
@@ -15,6 +16,18 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+        ],
+        'view' => [
+            'theme' => [
+                'basePath' => '@app/themes/admin_lte',
+                'baseUrl' => '@app/themes/admin_lte',
+                'pathMap' => [
+                    '@app/views' => '@app/themes/admin_lte'
+                ]
+            ]
+        ],
+        'authManager' => [
+            'class' => \yii\rbac\DbManager::className(),
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -38,14 +51,14 @@ return [
             'errorAction' => 'site/error',
         ],
 
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];

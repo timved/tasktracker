@@ -18,6 +18,12 @@ use yii\helpers\Html;
         <div class="navbar-custom-menu">
 
             <ul class="nav navbar-nav">
+                <li>
+                    <?= Html::a('Пользователи', ['user/index']); ?>
+                </li>
+                <li>
+                    <?= Html::a('Задачи', ['task/index']); ?>
+                </li>
 
                 <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown messages-menu">

@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-
+$this->title = 'White Rooster admin';
 /* @var $this \yii\web\View */
 /* @var $content string */
 

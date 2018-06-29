@@ -29,7 +29,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Таск-трекер',
+        'brandLabel' => Html::img('@web/img/logo/navbar_logo.png', ['alt'=>Yii::$app->name, 'class' => 'class="pull-left main_logo"']) .  Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -38,7 +38,7 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Главная', 'url' => ['/site/index']],
         ['label' => 'Описание', 'url' => ['/site/about']],
-//        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Задачи', 'url' => ['/task/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Регистрация', 'url' => ['/site/signup']];

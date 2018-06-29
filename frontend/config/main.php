@@ -8,12 +8,22 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'name' => 'White Rooster',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
+        ],
+        'redis' => [
+            'class' => \yii\redis\Connection::className(),
+            'hostname' => 'localhost',
+            'port' => 6379,
+            'database' => 0,
+        ],
+        'authManager' => [
+            'class' => \yii\rbac\DbManager::className(),
         ],
         'user' => [
             'identityClass' => 'common\models\User',

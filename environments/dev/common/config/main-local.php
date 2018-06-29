@@ -1,6 +1,7 @@
 <?php
 return [
     'components' => [
+        'name' => 'White rooster',
         'db' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=tasktracker',
