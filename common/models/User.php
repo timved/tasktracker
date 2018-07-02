@@ -26,9 +26,8 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
-//    const ROLE_ADMINISTRATOR = 0;
-//    const ROLE_USER = 1;
-//    const ROLE_GUEST = 2;
+    public $password;
+
 
 
     /**
@@ -57,7 +56,21 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-            ['role_id','integer'],
+
+//            ['username', 'trim'],
+//            ['username', 'required'],
+//            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
+//            ['username', 'string', 'min' => 2, 'max' => 255],
+//
+//            ['email', 'trim'],
+//            ['email', 'required'],
+//            ['email', 'email'],
+//            ['email', 'string', 'max' => 255],
+//            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+//
+//            ['password', 'required'],
+//            ['password', 'string', 'min' => 6],
+//            ['role_id', 'integer'],
         ];
     }
 
@@ -216,4 +229,5 @@ class User extends ActiveRecord implements IdentityInterface
                 break;
         }
     }
+
 }

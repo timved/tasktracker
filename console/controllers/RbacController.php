@@ -5,6 +5,8 @@
  * Date: 28.06.2018
  * Time: 22:48
  */
+namespace console\controllers;
+
 use yii\console\Controller;
 
 class RbacController extends Controller
@@ -69,9 +71,7 @@ class RbacController extends Controller
         $am->addChild($user, $operationDeleteComment);
         $am->addChild($user, $operationUpdateComment);
 
-
-
-
+        $am->addChild($guest, $operationViewTask);
     }
 
 

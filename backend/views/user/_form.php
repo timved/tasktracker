@@ -12,13 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <!--    --><? //= $form->field($model, 'status')->textInput() ?>
+<!--        --><?//= $form->field($model, 'status')->textInput() ?>
 
-    <!--    --><? //= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-    <!---->
-    <!--    --><? //= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
-    <!---->
-    <!--    --><? //= $form->field($model, 'password_hash')->passwordInput() ?>
+        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+
+        <?=  $form->field($model, 'email')->textInput() ?>
+
+        <?= $form->field($model, 'password')->passwordInput() ?>
 
     <?= $form->field($model, 'role_id')->dropDownList([
         '0' => 'Администратор',
