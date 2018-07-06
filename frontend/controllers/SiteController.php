@@ -1,6 +1,8 @@
 <?php
+
 namespace frontend\controllers;
 
+use common\models\User;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -150,12 +152,12 @@ class SiteController extends Controller
      */
     public function actionSignup()
     {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
+
+        $model = new User();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->signUp();
+            if (Yii::$app->getUser()->login($model)) {
+                return $this->goHome();
             }
         }
 

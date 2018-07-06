@@ -56,21 +56,21 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-
-//            ['username', 'trim'],
-//            ['username', 'required'],
-//            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
-//            ['username', 'string', 'min' => 2, 'max' => 255],
 //
-//            ['email', 'trim'],
-//            ['email', 'required'],
-//            ['email', 'email'],
-//            ['email', 'string', 'max' => 255],
-//            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['username', 'trim'],
+            ['username', 'required'],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
+            ['username', 'string', 'min' => 2, 'max' => 255],
 //
-//            ['password', 'required'],
-//            ['password', 'string', 'min' => 6],
-//            ['role_id', 'integer'],
+            ['email', 'trim'],
+            ['email', 'required'],
+            ['email', 'email'],
+            ['email', 'string', 'max' => 255],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+//
+            ['password', 'required'],
+            ['password', 'string', 'min' => 6],
+            ['role_id', 'integer', 'message' => 'This email address has already been taken.'],
         ];
     }
 
@@ -228,6 +228,14 @@ class User extends ActiveRecord implements IdentityInterface
                 return 'Гость';
                 break;
         }
+    }
+
+    public function signUp()
+    {
+        $this->setPassword($this->password);
+        $this->generateAuthKey();
+        $this->role_id = 2;
+        $this->save();
     }
 
 }

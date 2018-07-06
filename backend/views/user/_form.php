@@ -24,10 +24,12 @@ use yii\widgets\ActiveForm;
         '0' => 'Администратор',
         '1' => 'Пользователь',
         '2' => 'Гость',
-    ],
-        $params = [
-            'prompt' => 'Изменить роль...',
-        ]) ?>
+    ]
+//        $params = [
+//            'prompt' => 'Изменить роль...',
+//        ]
+    )
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
