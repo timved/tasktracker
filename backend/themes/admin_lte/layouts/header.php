@@ -24,6 +24,9 @@ use yii\helpers\Html;
                 <li>
                     <?= Html::a('Задачи', ['task/index']); ?>
                 </li>
+                <li>
+                    <?= Html::a('Проекты', ['project/index']); ?>
+                </li>
 
                 <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown messages-menu">

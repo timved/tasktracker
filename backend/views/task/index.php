@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Task', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    <?php \yii\widgets\Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -33,8 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'date',
 //            'description:ntext',
             [
-                'attribute'=>'description',
-                'format'=>'raw',
+                'attribute' => 'description',
+                'format' => 'raw',
 //                'class' => 'yii\grid\SerialColumn',
                 'contentOptions' => ['style' => 'width:200px; white-space: normal;'],
 //                'style' => 'width:100px',
@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'user_username',
                 'label' => 'Пользователь',
-                'value' => function($model){
+                'value' => function ($model) {
                     return $model->user->username;
                 },
 //                'filter' => ArrayHelper::map(User::find()->all(), 'id', 'username'),
@@ -56,4 +56,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    <?php \yii\widgets\Pjax::end(); ?>
 </div>
