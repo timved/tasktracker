@@ -12,6 +12,16 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+//    'enableSession' => false,
+    'modules' => [
+        'api' => [
+            'class' => 'frontend\modules\api\Rest',
+//           'user' => [
+//               'enableSession' => false,
+//               'loginUrl' => null,
+//            ],
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -49,14 +59,15 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                ['class' => \yii\rest\UrlRule::className(), 'controller' => 'api/task'],
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];
