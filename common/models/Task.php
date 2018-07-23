@@ -12,11 +12,13 @@ use Yii;
  * @property string $date
  * @property string $description
  * @property int $user_id
+ * @property int $project_id
  * @property string $status
  * @property string $created_at
  * @property string $updated_at
  *
  * @property User $user
+ * @property Project $project
  */
 class Task extends ActiveRecord
 {
@@ -40,6 +42,7 @@ class Task extends ActiveRecord
             [['user_id'], 'integer'],
             [['name', 'status'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['project_id'], 'exist', 'skipOnError' => true, 'targetClass' => Project::className(), 'targetAttribute' => ['project_id' => 'id']],
         ];
     }
 
@@ -50,13 +53,14 @@ class Task extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'date' => 'Date',
-            'description' => 'Description',
-            'user_id' => 'User ID',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => 'Название',
+            'date' => 'Дата выполнения',
+            'description' => 'Описание',
+            'user_id' => 'Пользователь',
+            'status' => 'Статус',
+            'project_id' => 'Проект',
+            'created_at' => 'Дата создания',
+            'updated_at' => 'Дата изменения',
         ];
     }
 
@@ -66,6 +70,11 @@ class Task extends ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    public function getProject()
+    {
+        return $this->hasOne(Project::className(), ['id' => 'project_id']);
     }
 
     public static function getByCurrentMonth($userId, $month)

@@ -13,14 +13,15 @@ use common\models\Task;
 class TaskSearch extends Task
 {
     public $user_username;
+    public $project_name;
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'user_id'], 'integer'],
-            [['name', 'date', 'description', 'status', 'created_at', 'updated_at','user_username'], 'safe'],
+            [['id', 'user_id', 'project_id'], 'integer'],
+            [['name', 'date', 'description', 'status', 'created_at', 'updated_at','user_username', 'project_name'], 'safe'],
         ];
     }
 
@@ -43,7 +44,7 @@ class TaskSearch extends Task
     public function search($params)
     {
         $query = Task::find();
-        $query->joinWith('user');
+        $query->joinWith('user')->joinWith('project');
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -62,6 +63,7 @@ class TaskSearch extends Task
         $query->andFilterWhere([
             'id' => $this->id,
             'date' => $this->date,
+//            'project_id' => $this->project_id,
 //            'user_id' => $this->user_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
@@ -70,7 +72,8 @@ class TaskSearch extends Task
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'status', $this->status])
-            ->andFilterWhere(['like', 'user.username', $this->user_username]);
+            ->andFilterWhere(['like', 'user.username', $this->user_username])
+            ->andFilterWhere(['like', 'project.project_name', $this->project_name]);
 
         return $dataProvider;
     }

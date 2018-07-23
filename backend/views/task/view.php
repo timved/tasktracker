@@ -40,6 +40,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->user->username;
                 },
             ],
+            [
+                'attribute' => 'project_id',
+                'label' => 'Проект',
+                'value' => function($model){
+                    return $model->project->project_name;
+                },
+            ],
             'status',
             'created_at',
             'updated_at',

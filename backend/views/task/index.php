@@ -41,6 +41,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 //            'user_id',
             [
+                'attribute' => 'project_name',
+                'label' => 'Проект',
+                'value' => function ($model) {
+                    return $model->project->project_name;
+                },
+            ],
+            [
                 'attribute' => 'user_username',
                 'label' => 'Пользователь',
                 'value' => function ($model) {
@@ -49,9 +56,9 @@ $this->params['breadcrumbs'][] = $this->title;
 //                'filter' => ArrayHelper::map(User::find()->all(), 'id', 'username'),
 //                'filterOptions' => ['style' => 'height: 10px;'],
             ],
-            //'status',
-            //'created_at',
-            //'updated_at',
+            'status',
+            'created_at',
+            'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

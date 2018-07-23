@@ -65,7 +65,7 @@ class ProjectController extends Controller
     public function actionCreate()
     {
         $model = new Project();
-
+        $model->project_status = 'Выполняется';
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

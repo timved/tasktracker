@@ -14,10 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'project_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'project_status')->dropDownList([
-        'Выполняется' => 'Выполняется',
-        'Выполнено' => 'Выполнено',
-    ]) ?>
+<!--    --><?//= $form->field($model, 'project_status')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

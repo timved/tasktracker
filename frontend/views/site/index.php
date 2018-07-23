@@ -7,5 +7,5 @@ AppAsset::register($this);
 $this->title = 'White Rooster';
 ?>
 <div class="site-index">
-    <div class="logo"><?= Html::img('@web/img/logo/index.jpg', ['alt' => '"White rooster" таск-трекер']) ?></div>
+    <div class="logo">Task-tracker<br><?= Html::img('@web/img/logo/index.jpg', ['alt' => '"White rooster" таск-трекер']) ?></div>
 </div>
